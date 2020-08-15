@@ -16,7 +16,6 @@
         <dependency>
             <groupId>org.zy</groupId>
             <artifactId>rpc-service</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
