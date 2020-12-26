@@ -2,71 +2,53 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <parent>
-    <artifactId>self-rpc</artifactId>
-    <groupId>org.zy</groupId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
-  <modelVersion>4.0.0</modelVersion>
-
-  <artifactId>rpc-first</artifactId>
-  <packaging>pom</packaging>
-
-  <name>rpc-first</name>
-  <modules>
-    <module>rpc-provider</module>
-    <module>rpc-service</module>
-    <module>rpc-consumer</module>
-  </modules>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-  </properties>
-
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.zy</groupId>
-        <artifactId>rpc-provider</artifactId>
+    <parent>
+        <artifactId>self-rpc</artifactId>
+        <groupId>com.zy</groupId>
         <version>1.0-SNAPSHOT</version>
-      </dependency>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>rpc-first</artifactId>
+    <packaging>pom</packaging>
 
-      <dependency>
-        <groupId>org.zy</groupId>
-        <artifactId>rpc-service</artifactId>
-        <version>1.0-SNAPSHOT</version>
-      </dependency>
+    <modules>
+        <module>self-rpc-common</module>
+        <module>self-rpc-sample</module>
+        <module>self-rpc-sample-demo</module>
+    </modules>
 
-      <dependency>
-        <groupId>org.zy</groupId>
-        <artifactId>rpc-first</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
 
-  <build>
-    <plugins>
-      <!-- 配置 maven 编译插件-->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.zy</groupId>
+                <artifactId>self-rpc-common</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zy</groupId>
+                <artifactId>self-rpc-sample</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <!-- 配置 maven 编译插件-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
