@@ -14,11 +14,10 @@ public class RpcServiceProxy {
     /**
      * return a proxy of special interface
      */
-    @SuppressWarnings("unckecked")
+    @SuppressWarnings("unchecked")
     public static <T> T proxy(Class<T> interfaceClass, String hostAddress, int port) {
-        T instance = (T) Proxy.newProxyInstance(interfaceClass.getClassLoader()
+        return  (T) Proxy.newProxyInstance(interfaceClass.getClassLoader()
                 , new Class[]{interfaceClass}
                 , new RpcRequestHandler(hostAddress, port));
-        return instance;
     }
 }

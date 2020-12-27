@@ -25,7 +25,7 @@ public class RpcRequestParam implements Serializable {
     /**
      * method parameter type
      */
-    private Class[] parameterTypes;
+    private Class<?>[] parameterTypes;
 
     public String getClassName() {
         return className;
@@ -51,11 +51,11 @@ public class RpcRequestParam implements Serializable {
         this.args = args;
     }
 
-    public Class[] getParameterTypes() {
+    public Class<?>[] getParameterTypes() {
         return parameterTypes;
     }
 
-    public void setParameterTypes(Class[] parameterTypes) {
+    public void setParameterTypes(Class<?>[] parameterTypes) {
         this.parameterTypes = parameterTypes;
     }
 

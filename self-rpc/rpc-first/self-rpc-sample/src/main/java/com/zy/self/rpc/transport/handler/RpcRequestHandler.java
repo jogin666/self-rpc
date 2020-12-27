@@ -17,11 +17,11 @@ public class RpcRequestHandler implements InvocationHandler {
     /**
      * provider address
      */
-    private String hostAddress;
+    private final String hostAddress;
     /**
      * listen port
      */
-    private int port;
+    private final int port;
 
     public RpcRequestHandler(String hostAddress, int port) {
         this.hostAddress = hostAddress;
@@ -46,8 +46,8 @@ public class RpcRequestHandler implements InvocationHandler {
      */
     private Object handler(RpcRequestParam requestParam) throws IOException {
         RpcRequest rpcRequest = new RpcRequest(hostAddress, port);
-        System.out.printf("执行请求.....");
-        System.out.printf("\n请求的数据：[%s]\n", requestParam.toString());
+        System.out.print("执行请求.....\n");
+        System.out.printf("请求的数据：[%s]\n", requestParam.toString());
         Object result = rpcRequest.sendRequest(requestParam);
         System.out.println("执行请求结束......");
         return result;

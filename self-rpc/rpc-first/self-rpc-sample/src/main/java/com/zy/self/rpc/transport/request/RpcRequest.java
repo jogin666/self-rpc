@@ -18,11 +18,11 @@ public class RpcRequest {
     /**
      * provider address
      */
-    private String hostAddress;
+    private final String hostAddress;
     /**
      * listen port
      */
-    private int port;
+    private final int port;
 
     public RpcRequest(String hostAddress, int port) {
         this.hostAddress = hostAddress;
@@ -34,39 +34,25 @@ public class RpcRequest {
      */
     public Object sendRequest(RpcRequestParam requestParam) throws IOException {
         try (
-                Socket socket = newSocket();
+                Socket socket = new Socket(hostAddress, port);
                 ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
                 ObjectInputStream in = new ObjectInputStream(socket.getInputStream())
         ) {
             out.writeObject(requestParam);
             out.flush();
 
-            Object result = in.readObject();
-            return result;
+            return in.readObject();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            System.err.printf("send a rpc request has occur a error: {%s}",e);
         }
         return null;
-    }
-
-    private Socket newSocket() throws IOException {
-        Socket socket = new Socket(hostAddress, port);
-        return socket;
     }
 
     public String getHostAddress() {
         return hostAddress;
     }
 
-    public void setHostAddress(String hostAddress) {
-        this.hostAddress = hostAddress;
-    }
-
     public int getPort() {
         return port;
-    }
-
-    public void setPort(int port) {
-        this.port = port;
     }
 }
